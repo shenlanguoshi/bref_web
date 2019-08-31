@@ -1,96 +1,212 @@
-/*
- *    Copyright (c) 2018-2025, lengleng All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright
- * notice, this list of conditions and the following disclaimer in the
- * documentation and/or other materials provided with the distribution.
- * Neither the name of the pig4cloud.com developer nor the names of its
- * contributors may be used to endorse or promote products derived from
- * this software without specific prior written permission.
- * Author: lengleng (wangiegie@gmail.com)
- */
-
-import request from '@/router/axios'
-
-export function roleList() {
-  return request({
-    url: '/admin/role/roleList',
-    method: 'get'
-  })
+import request from '@/plugin/axios'
+/*分页搜索权限列表*/
+export function getPermission(obj) {
+    return request({
+        url: 'user-service/permission/{"pageNo":"'+obj.pageNo+'","pageSize":"'+obj.pageSize+'"}/'+'{"name":"'+obj.searchParam.name+'"}',
+        method: 'get',
+    })
+}
+/*修改权限信息*/
+export function putPermission(obj) {
+    return request({
+        url: '/user-service/permission/' + obj.id,
+        method: 'put',
+        data: {
+            permissionInfo:JSON.stringify(obj)
+        }
+    })
+}
+/*新增权限*/
+export function addPermission(obj) {
+    return request({
+        url: 'user-service/permission',
+        method: 'post',
+        data: {permissionInfo:JSON.stringify(obj)}
+    })
+}
+/*删除权限*/
+export function delPermission(obj) {
+    return request({
+        url: 'user-service/permission/'+obj ,
+        method: 'DELETE',
+    })
 }
 
-export function fetchList(query) {
-  return request({
-    url: '/admin/role/rolePage',
-    method: 'get',
-    params: query
-  })
+/*查询权限-用户*/
+export function getPermissionUser(obj) {
+    return request({
+        url: 'user-service/permission/'+obj+'/user',
+        method: 'get',
+    })
+}
+/*删除权限-用户*/
+export function delPermissionUser(obj) {
+    return request({
+        url: 'user-service/permission/'+obj.id +'/user/'+obj.userId,
+        method: 'DELETE',
+    })
+}
+/*新增权限-用户*/
+export function addPermissionUser(obj) {
+    return request({
+        url: 'user-service/permission/user',
+        method: 'post',
+        data: {permissionUserInfo:JSON.stringify(obj)}
+    })
+}
+/*查询权限-组织机构*/
+export function getPermissionCor(obj) {
+    return request({
+        url: 'user-service/permission/'+obj+'/corporation',
+        method: 'get',
+    })
+}
+/*删除权限-组织机构*/
+export function delPermissionCor(obj) {
+    return request({
+        url: 'user-service/permission/'+obj.id +'/corporation/'+obj.userId,
+        method: 'DELETE',
+    })
+}
+/*新增权限-组织机构*/
+export function addPermissionCor(obj) {
+    return request({
+        url: 'user-service/permission/corporation',
+        method: 'post',
+        data: {permissionCorporationInfo:JSON.stringify(obj)}
+    })
 }
 
-export function deptRoleList(deptId) {
-  return request({
-    url: '/admin/role/roleList/' + deptId,
-    method: 'get'
-  })
+/*查询权限-岗位*/
+export function getPermissionCorWork(obj) {
+    return request({
+        url: 'user-service/permission/'+obj+'/corporationWork',
+        method: 'get',
+    })
+}
+/*删除权限-岗位*/
+export function delPermissionCorWork(permissionId,corporationWorkId) {
+    return request({
+        url: 'user-service/permission/'+permissionId +'/corporationWork/'+corporationWorkId,
+        method: 'DELETE',
+    })
 }
 
-export function getObj(id) {
-  return request({
-    url: '/admin/role/' + id,
-    method: 'get'
-  })
+/*新增权限-岗位*/
+export function addPermissionCorWork(permissionId,corporationWorkId) {
+    return request({
+        url: 'user-service/permission/corporationWork',
+        method: 'post',
+        data: {permissionCorporationWorkInfo:JSON.stringify({
+                permissionId,
+                corporationWorkId
+            })}
+    })
 }
 
-export function addObj(obj) {
-  return request({
-    url: '/admin/role',
-    method: 'post',
-    data: obj
-  })
+/*查询权限-职务*/
+export function getPermissionJobPosition(obj) {
+    return request({
+        url: 'user-service/permission/'+obj+'/jobPosition',
+        method: 'get',
+    })
+}
+/*删除权限-职务*/
+export function delPermissionJobPosition(permissionId,jobPositionId) {
+    return request({
+        url: 'user-service/permission/'+permissionId +'/jobPosition/'+jobPositionId,
+        method: 'DELETE',
+    })
+}
+/*新增权限-职务*/
+export function addPermissionJobPosition(permissionId,jobPositionId) {
+    return request({
+        url: 'user-service/permission/jobPosition',
+        method: 'post',
+        data: {permissionJobPositionInfo:JSON.stringify({
+                permissionId,
+                jobPositionId
+            })}
+    })
 }
 
-export function putObj(obj) {
-  return request({
-    url: '/admin/role',
-    method: 'put',
-    data: obj
-  })
+/*查询权限-模块*/
+export function getPermissionModule(obj) {
+    return request({
+        url: 'user-service/permission/'+obj+'/module',
+        method: 'get',
+    })
 }
 
-export function delObj(id) {
-  return request({
-    url: '/admin/role/' + id,
-    method: 'delete'
-  })
+/*删除权限-模块*/
+export function delPermissionModule(permissionId,moduleId) {
+    return request({
+        url: 'user-service/permission/'+permissionId +'/module/'+moduleId,
+        method: 'DELETE',
+    })
+}
+/*新增权限-模块*/
+export function addPermissionModule(permissionId,moduleId) {
+    return request({
+        url: 'user-service/permission/module',
+        method: 'post',
+        data: {permissionModuleInfo:JSON.stringify({
+                permissionId,
+                moduleId
+            })}
+    })
 }
 
-export function permissionUpd(roleId, menuIds) {
-  return request({
-    url: '/admin/role/roleMenuUpd',
-    method: 'put',
-    data: {
-      roleId: roleId,
-      menuIds: menuIds
-    }
-  })
+/*查询权限-数据权限-行*/
+export function getPermissionDataScope(permissionId) {
+    return request({
+        url: 'user-service/permission/'+permissionId+'/dataScope',
+        method: 'get',
+    })
 }
 
-export function fetchRoleTree(roleName) {
-  return request({
-    url: '/admin/menu/roleTree/' + roleName,
-    method: 'get'
-  })
+/*删除权限-数据权限-行*/
+export function delPermissionDataScope(permissionId,dataScopeId) {
+    return request({
+        url: 'user-service/permission/'+permissionId +'/dataScope/'+dataScopeId,
+        method: 'DELETE',
+    })
+}
+/*新增权限-数据权限-行*/
+export function addPermissionDataScope(permissionId,dataScopeId) {
+    return request({
+        url: 'user-service/permission/dataScope',
+        method: 'post',
+        data: {permissionDataScopeInfo:JSON.stringify({
+                permissionId,
+                dataScopeId
+            })}
+    })
 }
 
-export function fetchDeptTree(query) {
-  return request({
-    url: '/admin/dept/tree',
-    method: 'get',
-    params: query
-  })
+/*查询权限-数据权限-列*/
+export function getPermissionDataSchema(permissionId) {
+    return request({
+        url: 'user-service/permission/'+permissionId+'/dataSchema',
+        method: 'get',
+    })
+}
+
+/*删除权限-数据权限-列*/
+export function delPermissionDataSchema(permissionId,dataSchemaId) {
+    return request({
+        url: 'user-service/permission/'+permissionId +'/dataSchema/'+dataSchemaId,
+        method: 'DELETE',
+    })
+}
+/*新增权限-数据权限-列*/
+export function addPermissionDataSchema(permissionId,dataSchemaId) {
+    return request({
+        url: 'user-service/permission/dataSchema',
+        method: 'post',
+        data: {permissionDataSchemaInfo:JSON.stringify({
+                permissionId,
+                dataSchemaId
+            })}
+    })
 }

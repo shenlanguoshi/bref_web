@@ -1,18 +1,22 @@
-
-import request from '@/router/axios'
+import request from '@/plugin/axios'
 
 export function fetchList(query) {
   return request({
-    url: '/user-service/user/{"pageNo":"'+query.page+'","pageSize":"'+query.limit+'"}/{"username":"'+(query.username || "")+'"}',
+    url: '/user-service/user/{"pageNo":"'+query.pageNo+'","pageSize":"'+query.pageSize+'"}/{"username":"'+(query.searchParam.username || "")+'"}',
     method: 'get',
   })
 }
 
-export function registerUser(state, code){
+export function registerUser(state){
     return request({
         url: '/user-service/user',
         method: 'post',
-        data: state
+        data: {
+            userInfo:JSON.stringify({
+                username: state.username,
+                password:state.password,
+            })
+        }
     })
 }
 
@@ -44,7 +48,7 @@ export function putObj(obj) {
     method: 'put',
     data: {
         userInfo:JSON.stringify({
-            password:obj.newpassword1
+            password:obj.password
         })
     }
   })

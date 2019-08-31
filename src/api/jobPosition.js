@@ -1,9 +1,9 @@
-import request from '@/router/axios';
+import request from '@/plugin/axios';
 
 /*分页搜索职务列表*/
 export function getJobPosition(obj) {
     return request({
-        url: 'user-service/jobPosition/{"pageNo":"'+obj.pageNo+'","pageSize":"'+obj.pageSize+'"}/'+'{"name":"'+obj.name+'"}',
+        url: 'user-service/jobPosition/{"pageNo":"'+obj.pageNo+'","pageSize":"'+obj.pageSize+'"}/'+'{"name":"'+obj.searchParam.name+'"}',
         method: 'get',
     })
 }

@@ -1,0 +1,69 @@
+@import '~@/assets/style/unit/color.scss';
+
+// 工具类名统一前缀
+$prefix: d2;
+
+// 禁止用户选中 鼠标变为手形
+%unable-select {
+  user-select: none;
+  cursor: pointer;
+}
+
+// 填满父元素
+// 组要父元素 position: relative | absolute;
+%full {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// flex 垂直水平居中
+%flex-center-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+%flex-center-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// 将元素模拟成卡片外观
+%card {
+  border: 1px solid #dddee1;
+  border-color: #e9eaec;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  position: relative;
+}
+
+
+%flex-wrap{ display: -webkit-box;display: -ms-flexbox;	display: -webkit-flex;display: flex; }
+%flex-con{     -webkit-box-flex: 1;     -webkit-flex: 1;    flex: 1;}
+%flex-vertical{ -webkit-box-orient: vertical;-webkit-flex-flow: column;flex-flow: column;}
+%flex-align-center{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;}
+%flex-pack-center{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}
+%flex-pack-justify{-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+%showOmit-1{display: -webkit-box;-webkit-line-clamp: 1; -webkit-box-orient: vertical;overflow: hidden;}
+%showOmit-11{ text-overflow:ellipsis; white-space:nowrap;overflow:hidden;}
+%showOmit-2{display: -webkit-box;-webkit-line-clamp: 2; -webkit-box-orient: vertical;overflow: hidden;}
+%clearFloat{
+  &:after{
+    content:'';
+    display: block;
+    height:0;
+    clear: both;
+  }
+}
+
+
+
+.table_btn{
+  text-align: right;
+}

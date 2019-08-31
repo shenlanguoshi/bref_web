@@ -1,0 +1,41 @@
+/* 改变主题色变量 */
+$--color-primary: #2791F4 !default;
+$--color-success: #34BF97 !default;
+
+
+
+
+//$--color-info: #E5E6EE !default;
+
+//$--button-info-font-color: #636B90 !default;   //按钮字体颜色
+
+/*默认按钮样式*/
+
+$--button-default-background-color: #EEEEEE !default;
+$--button-default-border-color: #EEEEEE !default;
+$--button-default-font-color: #999999 !default;
+
+/*
+$--color-text-regular:#636B90 !default;  //form 表单字体颜色
+
+$--color-text-primary:#636B90 !default;  //dialog title 字体颜色 弹窗
+$--dialog-title-font-size:24px !default;  //dialog title 字体颜色 弹窗
+$--dialog-padding-primary:30px !default;  //dialog title 字体颜色 弹窗
+
+$--popover-padding:0;
+
+$--messagebox-warning-color:#F76F72 !default; //删除 提示 图标
+
+$--button-danger-background-color:#F76F72 !default; //删除
+$--button-danger-border-color:#F76F72 !default; //删除
+
+$--dropdown-menuItem-hover-fill:#4B76EC;
+$--dropdown-menuItem-hover-color:#fff;
+*/
+
+//$--select-option-hover-background:#4B76EC;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

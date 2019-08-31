@@ -1,10 +1,10 @@
-import request from '@/router/axios'
+import request from '@/plugin/axios'
 
 /*查询组织机构树*/
 export function getCorporation(obj) {
     return request({
         url: 'user-service/corporation',
-        method: 'get',
+        method: 'get'
     })
 }
 
@@ -12,7 +12,7 @@ export function getCorporation(obj) {
 export function delCorporation(obj) {
     return request({
         url: 'user-service/corporation/'+obj,
-        method: 'DELETE',
+        method: 'DELETE'
     })
 }
 
@@ -48,7 +48,7 @@ export function getCorporationUser(id) {
 export function delCorporationUser(obj) {
     return request({
         url: 'user-service/corporation/'+obj.id+'/user/'+obj.userId,
-        method: 'DELETE',
+        method: 'DELETE'
     })
 }
 /*新增组织机构用户*/
@@ -71,7 +71,7 @@ export function getCorporationPermission(id) {
 export function delCorporationPermission(obj) {
     return request({
         url: 'user-service/corporation/'+obj.corporationId+'/permission/'+obj.permission,
-        method: 'DELETE',
+        method: 'DELETE'
     })
 }
 /*新增组织机构权限*/

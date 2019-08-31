@@ -1,9 +1,9 @@
-import request from '@/router/axios';
+import request from '@/plugin/axios';
 /*分页搜索岗位列表*/
 export function getCorporationWork(obj) {
     return request({
         url: 'user-service/corporationWork/{"pageNo":"'+obj.pageNo+'","pageSize":"'+obj.pageSize+'"}/' +
-            '{"name":"'+obj.name+'"'+(obj.corporationId?(',"corporationId":"'+obj.corporationId+'"'):'')+'}',
+            '{"name":"'+obj.searchParam.name+'"'+(obj.corporationId?(',"corporationId":"'+obj.corporationId+'"'):'')+'}',
         method: 'get',
     })
 }
